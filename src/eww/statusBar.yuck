@@ -1,0 +1,70 @@
+(defpoll year     :interval "1h" "date +%Y")
+(defpoll month    :interval "1h" "date +%b")
+(defpoll day      :interval "1h" "date +%d")
+(defpoll weekday  :interval "1h" "date +%a")
+(defpoll hour     :interval "1s" "date +%H")
+(defpoll minute   :interval "1s" "date +%M")
+  
+(defpoll battery :interval "10s" "./batteryDisplay.sh")
+(defpoll powerDraw :interval "10s" "cat /sys/class/power_supply/BAT0/current_now")
+
+(defwidget container []
+  (box :orientation "h"
+    :class "container"
+    :halign "fill"
+    (clock)
+    (system)
+  )
+)
+
+(defwidget clock []
+  (box :orientation "h"
+    :halign "start"
+    :spacing "20"
+    :space-evenly "false"
+    :class "clock"
+    (label :text "")
+    (label :text "${weekday}")
+    (label :text "")
+    (label :text "${month}")
+    (label :text "${day}")
+    (label :text "")
+    (label :text "${year}")
+    (label :text "")
+    (label :text "${hour}:${minute}")
+  )
+)
+
+(defwidget system []
+  (box :orientation "h"
+    :halign "end"
+    :spacing "20"
+    :space-evenly "false"
+    (label :text "RAM")
+    (label :text "${round(EWW_RAM.used_mem_perc, 1)}")
+    (label :text "")
+    (label :text "SSD")
+    (label :text "${round(EWW_DISK['/'].used_perc, 1)}")
+    (label :text "")
+    (label :text "CPU")
+    (label :text "${round(EWW_CPU.avg, 1)}")
+    (label :text "")
+    (label :text "BAT")
+    (label :text "${battery}")
+    (label :text "")
+  )
+)
+
+(defwindow status-bar
+  :class "status-bar"
+  :monitor 0
+  :geometry (geometry :x "0%"
+    :y "0%"
+    :width "100%"
+    :height "10px"
+  :anchor "center bottom")
+  :stacking "bg"
+  :exclusive false
+  :focusable false
+  (container)
+)

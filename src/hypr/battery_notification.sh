@@ -59,7 +59,7 @@ do
     then
         notify-send -t 1000 -u critical 'Battery Critical! Hibernating!' "Goodnight"
 
-        sleep 1
+        sleep 2
 
         notify-send -u critical 'Laptop hibernated due to low battery'
 

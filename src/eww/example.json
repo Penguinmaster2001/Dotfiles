@@ -1,0 +1,40 @@
+{
+  "files": [
+    {
+      "name": "file1",
+      "bindingGroups": [
+        {
+          "title": "output",
+          "bindings": [
+            {
+              "mod": "super alt",
+              "key": "a",
+              "dispatch": "exec",
+              "command": "echo 'this is command'",
+              "description": "outputs text"
+            },
+            {
+              "mod": "super",
+              "key": "b",
+              "dispatch": "exec",
+              "command": "echo 'this is another command'",
+              "description": "outputs diff. text"
+            }
+          ]
+        },
+        {
+          "title": "windows",
+          "bindings": [
+            {
+              "mod": "super shift",
+              "key": "left",
+              "dispatch": "resizeactive",
+              "command": "+10 +0",
+              "description": "resize window"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

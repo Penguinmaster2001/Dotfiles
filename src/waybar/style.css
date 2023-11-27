@@ -1,0 +1,119 @@
+/*
+Material Ocean theme colors:
+primary:    #0F111A;
+secondary:  #00010A;
+accent:     #FF4151;
+0-grey:     #3B4252;
+1-red:      #BF616A;
+2-green:    #A3BE8C;
+3-yellow:   #EBCB8B;
+4-blue:     #81A1C1;
+5-purple:   #B48EAD;
+6-cyan:     #88C0D0;
+7-white:    #E5E9F0;
+8-darkgrey: #4C566A;
+*/
+
+* {
+    font-family: MonaspaceNeon, FontAwesome, Input, monospace;
+    font-size: 20px;
+}
+
+
+window#waybar,
+#workspaces {
+    background: transparent;
+    border: none;
+}
+
+
+tooltip {
+  background: transparent;
+  border: none;
+}
+
+tooltip label {
+    background: transparent;
+    color: #E5E9F0;
+    border: 2px solid #FF4151;
+    border-radius: 20px;
+  }
+
+
+#clock,
+#cpu,
+#memory,
+#disk,
+#bluetooth,
+#network,
+#pulseaudio,
+#workspaces button,
+#battery {
+    color: #00010A;
+    border: 2px solid #FF4151;
+    border-radius: 10px;
+    margin-bottom: 16px;
+    padding: 6px;
+}
+
+#clock,
+#cpu,
+#memory,
+#disk,
+#bluetooth,
+#network,
+#pulseaudio,
+#battery {
+    background-color: #B48EAD;
+}
+
+
+#workspaces button {
+    background-color: #81A1C1;
+}
+
+
+#bluetooth.disabled,
+#bluetooth.off,
+#network.disabled {
+    background-color: #4C566A;
+}
+
+#network.linked,
+#battery.charging,
+#battery.plugged {
+    background-color: #88C0D0;
+}
+
+#bluetooth.connected,
+#network.wifi,
+#network.ethernet,
+#battery.full:not(.charging),
+#battery.good:not(.charging) {
+    background-color: #A3BE8C;
+}
+
+#battery.warning:not(.charging) {
+    background-color: #EBCB8B;
+}
+
+#bluetooth.on,
+#network.disconnected {
+    background-color: #BF616A;
+}
+
+#battery.critical:not(.charging) {
+    background-color: #BF616A;
+    animation-name: blink;
+    animation-duration: 0.5s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+@keyframes blink {
+    to {
+        background-color: #E5E9F0;
+        color: #00010A;
+    }
+}

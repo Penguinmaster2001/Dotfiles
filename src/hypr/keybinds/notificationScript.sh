@@ -1,32 +1,30 @@
 #!/bin/bash
-
-change_all_sink_volume () {
-    for SINK in $(pacmd list-sinks | grep 'index:' | cut -b12-)
-    do
-        pactl set-sink-volume $SINK $1
-    done
-}
-
-mute_all_sinks () {
-    for SINK in $(pacmd list-sinks | grep 'index:' | cut -b12-)
-    do
-        pactl set-sink-mute $SINK toggle
-    done
-}
-
 DURATION=400
 
+
+format_volume () {
+    volume="$(wpctl get-volume @DEFAULT_SINK@)e"
+    echo "${volume:8:-1}"
+}
+
+change_volume () {
+    wpctl set-volume -l 1.5 @DEFAULT_AUDIO_SINK@ $1
+    notify-send -t $DURATION "Volume" "$(format_volume)"
+}
+
+toggle_mute () {
+    wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle
+    notify-send -t $DURATION "Mute" "$(format_volume)"
+}
 
 
 case $1 in
     "mute")
-        mute_all_sinks
-        notify-send -t $DURATION "Mute" "$(pamixer --get-mute)"
+        toggle_mute
     ;;
     
     "v")
-        change_all_sink_volume $2
-        notify-send -t $DURATION "Volume" "$(pamixer --get-volume-human)"
+        change_volume $2
     ;;
     
     "b")

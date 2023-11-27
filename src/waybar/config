@@ -1,0 +1,99 @@
+{
+    "layer": "bottom", // Waybar at top layer
+    "position": "bottom",
+    "exclusive": false,
+    "spacing": 6,
+
+    // Choose the order of the modules
+    "modules-left": ["custom/spacer", "clock", "cpu", "memory", "disk"],
+    "modules-center": ["hyprland/workspaces"],
+    "modules-right": ["pulseaudio", "network", "bluetooth", "battery", "custom/spacer"],
+
+    // Modules configuration
+    "hyprland/workspaces": {
+        "disable-scroll": true,
+        "all-outputs": true,
+        "warp-on-scroll": false,
+        "format": "{name}"
+    },
+
+    "clock": {
+        "format": "{:%a, %b %d, %Y %H:%M  %Y-%m-%d}",
+        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+        "on-click": "gnome-clocks"
+    },
+
+    "cpu": {
+        "format": "{usage}% ",
+        "on-click": "gnome-system-monitor"
+    },
+
+    "memory": {
+        "format": "{percentage}% ",
+        "tooltip-format": "RAM: {used}/{total} GiB\nSwap: {swapUsed}/{swapTotal} GiB",
+        "on-click": "gnome-system-monitor"
+    },
+
+    "disk": {
+        "format": "{percentage_used}% 🖿",
+        "path": "/",
+        "tooltip-format": "Disk: {used}/{total}\n{free} free ({percentage_free}%)",
+        "on-click": "baobab"
+    },
+
+    "battery": {
+        "interval": 10,
+        "states": {
+            "full": 100,
+            "good": 80,
+            "warning": 20,
+            "critical": 5
+        },
+        "format": "{time} {capacity}% {icon}",
+        "format-charging": "{capacity}% ",
+        "format-icons": ["", "", "", "", ""],
+        "tooltip-format": "Battery"
+    },
+
+    "network": {
+        "format-wifi": "{essid} ({signalStrength}%) ",
+        "format-ethernet": "{ipaddr}/{cidr} ",
+        "tooltip-format": "{ifname} via {gwaddr} \nip: {ipaddr}/{cidr}",
+        "format-linked": "{ifname} (No IP) ",
+        "format-disconnected": "Disconnected ⚠",
+        "on-click": "nm-connection-editor"
+    },
+
+    "bluetooth": {
+        "format": " {status}",
+        "format-connected": " {num_connections} connected",
+        "tooltip-format": "{controller_alias}\t{controller_address}",
+        "tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{device_enumerate}",
+        "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}",
+        "on-click": "blueberry"
+    },
+
+    "pulseaudio": {
+        "format": "{volume}% {icon} {format_source}",
+        "format-bluetooth": "{volume}% {icon} {format_source}",
+        "format-bluetooth-muted": " {icon} {format_source}",
+        "format-muted": " {format_source}",
+        "format-source": "{volume}% ",
+        "format-source-muted": "",
+        "format-icons": {
+            "headphone": "",
+            "hands-free": "",
+            "headset": "",
+            "phone": "",
+            "portable": "",
+            "car": "",
+            "default": ["", "", ""]
+        },
+        "on-click": "pavucontrol"
+    },
+
+    "custom/spacer": {
+        "format": " ",
+        "tooltip": false
+    }
+}
