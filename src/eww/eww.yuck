@@ -1,6 +1,0 @@
-; to run:
-; /home/penguin/.config/eww/eww/target/release/eww daemon
-; /home/penguin/.config/eww/eww/target/release/eww open status-bar
-
-; (include "./keybindingCheatsheet.yuck")
-(include "./statusBar.yuck")

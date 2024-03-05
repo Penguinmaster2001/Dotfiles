@@ -1,14 +1,14 @@
 #!/bin/bash
 
 change_all_sink_volume () {
-    for SINK in $(pacmd list-sinks | grep 'index:' | cut -b12-)
+    for SINK in $(pactl list sinks | grep "Sink #" | cut -b7-)
     do
         pactl set-sink-volume $SINK $1
     done
 }
 
 mute_all_sinks () {
-    for SINK in $(pacmd list-sinks | grep 'index:' | cut -b12-)
+    for SINK in $(pactl list sinks | grep "Sink #" | cut -b7-)
     do
         pactl set-sink-mute $SINK toggle
     done
