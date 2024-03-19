@@ -18,7 +18,7 @@ set $term kitty
 # Your preferred application launcher
 # Note: pass the final command to swaymsg so that the resulting window can be opened
 # on the original workspace that the command was run on.
-set $menu dmenu_path | dmenu | xargs swaymsg exec --
+set $menu wofi -i --show drun | xargs swaymsg exec --
 
 ### Appearance
 # window corner radius in px
@@ -44,14 +44,16 @@ dim_inactive_colors.urgent #900000FF
 scratchpad_minimize disable
 
 ### Output configuration
-#
-# Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
-output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
-#
-# Example configuration:
-#
-#   output HDMI-A-1 resolution 1920x1080 position 1920,0
-#
+# man 5 sway-output
+output "Samsung Display Corp. 0x4171 Unknown" {
+    background /home/penguin/Documents/Config/Dotfiles/src/hypr/backgroundFish.jpg fill #0F111A
+    resolution 2880x1800@90.001Hz
+    scale 1
+    # This is the correct one
+    subpixel vrgb
+    adaptive_sync on
+    render_bit_depth 10
+}
 # You can get the names of your outputs by running: swaymsg -t get_outputs
 
 ### Idle configuration
@@ -68,16 +70,16 @@ output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
 # resumed. It will also lock your screen before your computer goes to sleep.
 
 ### Input configuration
-#
-# Example configuration:
-#
-#   input "2:14:SynPS/2_Synaptics_TouchPad" {
-#       dwt enabled
-#       tap enabled
-#       natural_scroll enabled
-#       middle_emulation enabled
-#   }
-#
+input "1267:12729:ASUE140D:00_04F3:31B9_Touchpad" {
+    accel_profile flat
+    pointer_accel 1.0
+    click_method clickfinger
+    drag enabled
+    dwt enabled # disable while typing
+    tap enabled
+    natural_scroll enabled
+    middle_emulation enabled
+}
 # You can get the names of your inputs by running: swaymsg -t get_inputs
 # Read `man 5 sway-input` for more information about this section.
 
@@ -217,7 +219,7 @@ mode "resize" {
     bindsym Return mode "default"
     bindsym Escape mode "default"
 }
-bindsym $mod+r mode "resize"
+# bindsym $mod+r mode "resize"
 
 #
 # Status Bar:
