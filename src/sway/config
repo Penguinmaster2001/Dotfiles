@@ -46,7 +46,7 @@ scratchpad_minimize disable
 ### Output configuration
 # man 5 sway-output
 output "Samsung Display Corp. 0x4171 Unknown" {
-    background /home/penguin/Documents/Config/Dotfiles/src/hypr/backgroundFish.jpg fill #0F111A
+    background /home/penguin/Documents/Config/Dotfiles/src/hypr/backgroundFish.jpg fill i0F111A
     resolution 2880x1800@90.001Hz
     scale 1
     # This is the correct one

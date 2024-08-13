@@ -1,14 +1,14 @@
 #!/bin/bash
 
 change_all_sink_volume () {
-    for SINK in $(pactl list sinks | grep "Sink #" | cut -b7-)
+    for SINK in $(pactl list sinks short | grep -oE "^[0-9]{2,4}")
     do
         pactl set-sink-volume $SINK $1
     done
 }
 
 mute_all_sinks () {
-    for SINK in $(pactl list sinks | grep "Sink #" | cut -b7-)
+    for SINK in $(pactl list sinks short | grep -oE "^[0-9]{2,3}")
     do
         pactl set-sink-mute $SINK toggle
     done
@@ -26,6 +26,7 @@ case $1 in
     
     "v")
         change_all_sink_volume $2
+        # pactl set-sink-volume @DEFAULT_SINK@ $2
         notify-send -t $DURATION "Volume" "$(pamixer --get-volume-human)"
     ;;
     
