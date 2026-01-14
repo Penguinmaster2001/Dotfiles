@@ -11,7 +11,7 @@ set $menu wofi -i --show drun | xargs swaymsg exec --
 
 
 
-exec waybar -c $config_root/waybar/sway/waybar_sway.jsonc -s $config_root/waybar/sway/style.css &
+include $config_root/sway/sway_startup.conf
 
 
 
