@@ -168,5 +168,4 @@ for_window [app_id=$win_big] resize set 1440 900
 for_window [app_id=$win_medium] resize set 960 600
 for_window [app_id=$win_small] resize set 576 360
 
-# Center: approximate with move position center (scriptable if needed).
-for_window [app_id=$win_center_cursor] move position center
+for_window [app_id=$win_center_cursor] move position cursor

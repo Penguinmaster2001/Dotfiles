@@ -53,6 +53,14 @@ fn main() -> Fallible<()>
                 "Unknown argument. Command: \"move_focused\", arg: \"{unknown}\""
             ))),
         },
+        "move_focused_new" => match args[2].to_lowercase().as_str()
+        {
+            "right" => workspaces.create_workspace_move_window(&mut connection, Direction::Right),
+            "left" => workspaces.create_workspace_move_window(&mut connection, Direction::Left),
+            unknown => Err(Error::CommandParse(format!(
+                "Unknown argument. Command: \"move_focused\", arg: \"{unknown}\""
+            ))),
+        },
         "info" => workspaces.print_info(),
         unknown => Err(Error::CommandParse(format!(
             "Unknown command \"{unknown}\""
