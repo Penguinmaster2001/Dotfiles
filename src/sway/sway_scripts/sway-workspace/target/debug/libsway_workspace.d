@@ -1,1 +1,0 @@
-/home/penguin/Documents/Config/Dotfiles/src/sway/sway_scripts/sway-workspace/target/debug/libsway_workspace.rlib: /home/penguin/Documents/Config/Dotfiles/src/sway/sway_scripts/sway-workspace/src/lib.rs /home/penguin/Documents/Config/Dotfiles/src/sway/sway_scripts/sway-workspace/src/workspace_manager.rs
