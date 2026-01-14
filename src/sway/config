@@ -1,52 +1,27 @@
-# Default config for sway
-#
-# Copy this to ~/.config/sway/config and edit it to your liking.
-#
 # Read `man 5 sway` for a complete reference.
 
 ### Variables
-#
-# Logo key. Use Mod1 for Alt.
 set $alt Mod1
 set $mod Mod4
 set $secondary Shift
-# Home row direction keys, like vim
-set $left h
-set $down j
-set $up k
-set $right l
 
 set $config_root ~/Documents/Config/Dotfiles/src
 
-# Your preferred application launcher
-# Note: pass the final command to swaymsg so that the resulting window can be opened
-# on the original workspace that the command was run on.
 set $menu wofi -i --show drun | xargs swaymsg exec --
+
+
 
 exec waybar -c $config_root/waybar/sway/waybar_sway.conf -s $config_root/waybar/sway/style.css &
 
+
+
 ### Appearance
-# window corner radius in px
-# corner_radius 10
+client.focused #FF4151 #285577 #ffffff
+client.unfocused #E5E9F0 #222222 #888888
+client.urgent #BF616A #900000 #ffffff
 
-# Window background blur
-# blur off
-# blur_xray off
-# blur_passes 2
-# blur_radius 5
 
-# shadows off
-# shadows_on_csd off
-# shadow_blur_radius 20
-# shadow_color #0000007F
 
-# inactive window fade amount. 0.0 = no dimming, 1.0 = fully dimmed
-# default_dim_inactive 0.0
-# dim_inactive_colors.unfocused #000000FF
-# dim_inactive_colors.urgent #900000FF
-
-# Move minimized windows into Scratchpad (enable|disable)
-# scratchpad_minimize disable
 
 default_border pixel 1
 hide_edge_borders both
@@ -54,6 +29,8 @@ gaps {
     outer 0
     inner -1
 }
+
+
 
 ### Output configuration
 # man 5 sway-output
@@ -68,6 +45,8 @@ output eDP-1 {
 }
 # You can get the names of your outputs by running: swaymsg -t get_outputs
 
+
+
 ### Idle configuration
 #
 # Example configuration:
@@ -81,6 +60,8 @@ output eDP-1 {
 # your displays after another 300 seconds, and turn your screens back on when
 # resumed. It will also lock your screen before your computer goes to sleep.
 
+
+
 ### Input configuration
 input "1267:12729:ASUE140D:00_04F3:31B9_Touchpad" {
     accel_profile flat
@@ -92,67 +73,38 @@ input "1267:12729:ASUE140D:00_04F3:31B9_Touchpad" {
     natural_scroll enabled
     middle_emulation enabled
 }
-# You can get the names of your inputs by running: swaymsg -t get_inputs
-# Read `man 5 sway-input` for more information about this section.
 
 ### Key bindings
-#
-# Basics:
-#
-    # Start a terminal
-    bindsym $mod+q exec kitty
-
-    # Kill focused window
-    bindsym $alt+f4 kill
-
-    # Drag floating windows by holding down $mod and left mouse button.
-    # Resize them with right mouse button + $mod.
-    # Despite the name, also works for non-floating windows.
-    # Change normal to inverse to use left mouse button for resizing and right
-    # mouse button for dragging.
-    floating_modifier $mod normal
-
-    # Reload the configuration file
-    bindsym $mod+Shift+c reload
-
-    # Exit sway (logs you out of your Wayland session)
-    # bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -B 'Yes, exit sway' 'swaymsg exit'
-
-#
-# Workspaces:
-#
-    # Switch to workspace
-    bindsym $mod+1 workspace number 1
-    bindsym $mod+2 workspace number 2
-    bindsym $mod+3 workspace number 3
-    bindsym $mod+4 workspace number 4
-    bindsym $mod+5 workspace number 5
-    bindsym $mod+6 workspace number 6
-    bindsym $mod+7 workspace number 7
-    bindsym $mod+8 workspace number 8
-    bindsym $mod+9 workspace number 9
-    bindsym $mod+0 workspace number 10
-    # Move focused container to workspace
-    bindsym $mod+Shift+1 move container to workspace number 1
-    bindsym $mod+Shift+2 move container to workspace number 2
-    bindsym $mod+Shift+3 move container to workspace number 3
-    bindsym $mod+Shift+4 move container to workspace number 4
-    bindsym $mod+Shift+5 move container to workspace number 5
-    bindsym $mod+Shift+6 move container to workspace number 6
-    bindsym $mod+Shift+7 move container to workspace number 7
-    bindsym $mod+Shift+8 move container to workspace number 8
-    bindsym $mod+Shift+9 move container to workspace number 9
-    bindsym $mod+Shift+0 move container to workspace number 10
-    # Note: workspaces can have any name you want, not just numbers.
-    # We just use 1-10 as the default.
+bindsym $mod+q exec kitty
 
 
 
-bindsym $mod+f fullscreen
+# Kill focused window
+bindsym $alt+f4 kill
+
+
+
+# Drag floating windows by holding down $mod and left mouse button.
+# Resize them with right mouse button + $mod.
+# Despite the name, also works for non-floating windows.
+# Change normal to inverse to use left mouse button for resizing and right
+# mouse button for dragging.
+floating_modifier $mod normal
+
+
+
+# Reload the configuration file
+bindsym $mod+Shift+c reload
+
+
+
+
+
 
 include /etc/sway/config.d/*
 include ./sway_keybindings.conf
 include ./sway_workspaces.conf
+
 
 
 set $win_float "(kitty|qalculate|blueberry.py|nm-connection-editor|pavucontrol|org.gnome.clocks|gnome-system-monitor|org.kde.polkit-kde-authentication-agent-1)"
