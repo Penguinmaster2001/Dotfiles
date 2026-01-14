@@ -11,13 +11,13 @@ set $menu wofi -i --show drun | xargs swaymsg exec --
 
 
 
-exec waybar -c $config_root/waybar/sway/waybar_sway.conf -s $config_root/waybar/sway/style.css &
+exec waybar -c $config_root/waybar/sway/waybar_sway.jsonc -s $config_root/waybar/sway/style.css &
 
 
 
 ### Appearance
-client.focused #FF4151 #285577 #ffffff
-client.unfocused #E5E9F0 #222222 #888888
+client.focused #FF4151 #FF4151 #ffffff
+client.unfocused #E5E9F0 #E5E9F0 #888888
 client.urgent #BF616A #900000 #ffffff
 
 
@@ -73,6 +73,8 @@ input "1267:12729:ASUE140D:00_04F3:31B9_Touchpad" {
     natural_scroll enabled
     middle_emulation enabled
 }
+
+
 
 ### Key bindings
 bindsym $mod+q exec kitty
