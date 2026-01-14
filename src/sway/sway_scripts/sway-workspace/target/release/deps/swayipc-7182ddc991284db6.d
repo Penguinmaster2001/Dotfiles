@@ -1,0 +1,11 @@
+/home/penguin/Documents/Config/Dotfiles/src/sway/sway_scripts/sway-workspace/target/release/deps/swayipc-7182ddc991284db6.d: /home/penguin/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/swayipc-4.0.0/src/lib.rs /home/penguin/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/swayipc-4.0.0/src/common.rs /home/penguin/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/swayipc-4.0.0/src/connection.rs /home/penguin/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/swayipc-4.0.0/src/event.rs /home/penguin/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/swayipc-4.0.0/src/socket.rs
+
+/home/penguin/Documents/Config/Dotfiles/src/sway/sway_scripts/sway-workspace/target/release/deps/libswayipc-7182ddc991284db6.rlib: /home/penguin/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/swayipc-4.0.0/src/lib.rs /home/penguin/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/swayipc-4.0.0/src/common.rs /home/penguin/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/swayipc-4.0.0/src/connection.rs /home/penguin/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/swayipc-4.0.0/src/event.rs /home/penguin/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/swayipc-4.0.0/src/socket.rs
+
+/home/penguin/Documents/Config/Dotfiles/src/sway/sway_scripts/sway-workspace/target/release/deps/libswayipc-7182ddc991284db6.rmeta: /home/penguin/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/swayipc-4.0.0/src/lib.rs /home/penguin/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/swayipc-4.0.0/src/common.rs /home/penguin/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/swayipc-4.0.0/src/connection.rs /home/penguin/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/swayipc-4.0.0/src/event.rs /home/penguin/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/swayipc-4.0.0/src/socket.rs
+
+/home/penguin/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/swayipc-4.0.0/src/lib.rs:
+/home/penguin/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/swayipc-4.0.0/src/common.rs:
+/home/penguin/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/swayipc-4.0.0/src/connection.rs:
+/home/penguin/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/swayipc-4.0.0/src/event.rs:
+/home/penguin/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/swayipc-4.0.0/src/socket.rs:

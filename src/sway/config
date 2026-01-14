@@ -7,46 +7,58 @@
 ### Variables
 #
 # Logo key. Use Mod1 for Alt.
+set $alt Mod1
 set $mod Mod4
+set $secondary Shift
 # Home row direction keys, like vim
 set $left h
 set $down j
 set $up k
 set $right l
-# Your preferred terminal emulator
-set $term kitty
+
+set $config_root ~/Documents/Config/Dotfiles/src
+
 # Your preferred application launcher
 # Note: pass the final command to swaymsg so that the resulting window can be opened
 # on the original workspace that the command was run on.
 set $menu wofi -i --show drun | xargs swaymsg exec --
 
+exec waybar -c $config_root/waybar/sway/waybar_sway.conf -s $config_root/waybar/sway/style.css &
+
 ### Appearance
 # window corner radius in px
-corner_radius 10
+# corner_radius 10
 
 # Window background blur
-blur off
-blur_xray off
-blur_passes 2
-blur_radius 5
+# blur off
+# blur_xray off
+# blur_passes 2
+# blur_radius 5
 
-shadows off
-shadows_on_csd off
-shadow_blur_radius 20
-shadow_color #0000007F
+# shadows off
+# shadows_on_csd off
+# shadow_blur_radius 20
+# shadow_color #0000007F
 
 # inactive window fade amount. 0.0 = no dimming, 1.0 = fully dimmed
-default_dim_inactive 0.0
-dim_inactive_colors.unfocused #000000FF
-dim_inactive_colors.urgent #900000FF
+# default_dim_inactive 0.0
+# dim_inactive_colors.unfocused #000000FF
+# dim_inactive_colors.urgent #900000FF
 
 # Move minimized windows into Scratchpad (enable|disable)
-scratchpad_minimize disable
+# scratchpad_minimize disable
+
+default_border pixel 1
+hide_edge_borders both
+gaps {
+    outer 0
+    inner -1
+}
 
 ### Output configuration
 # man 5 sway-output
-output "Samsung Display Corp. 0x4171 Unknown" {
-    background /home/penguin/Documents/Config/Dotfiles/src/hypr/backgroundFish.jpg fill i0F111A
+output eDP-1 {
+    background $config_root/hypr/backgroundFish.jpg fill #0F111A
     resolution 2880x1800@90.001Hz
     scale 1
     # This is the correct one
@@ -88,13 +100,10 @@ input "1267:12729:ASUE140D:00_04F3:31B9_Touchpad" {
 # Basics:
 #
     # Start a terminal
-    bindsym $mod+q exec $term
+    bindsym $mod+q exec kitty
 
     # Kill focused window
-    bindsym $mod+Shift+q kill
-
-    # Start your launcher
-    bindsym $mod+r exec $menu
+    bindsym $alt+f4 kill
 
     # Drag floating windows by holding down $mod and left mouse button.
     # Resize them with right mouse button + $mod.
@@ -107,31 +116,8 @@ input "1267:12729:ASUE140D:00_04F3:31B9_Touchpad" {
     bindsym $mod+Shift+c reload
 
     # Exit sway (logs you out of your Wayland session)
-    bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -B 'Yes, exit sway' 'swaymsg exit'
-#
-# Moving around:
-#
-    # Move your focus around
-    bindsym $mod+$left focus left
-    bindsym $mod+$down focus down
-    bindsym $mod+$up focus up
-    bindsym $mod+$right focus right
-    # Or use $mod+[up|down|left|right]
-    bindsym $mod+Left focus left
-    bindsym $mod+Down focus down
-    bindsym $mod+Up focus up
-    bindsym $mod+Right focus right
+    # bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -B 'Yes, exit sway' 'swaymsg exit'
 
-    # Move the focused window with the same, but add Shift
-    bindsym $mod+Shift+$left move left
-    bindsym $mod+Shift+$down move down
-    bindsym $mod+Shift+$up move up
-    bindsym $mod+Shift+$right move right
-    # Ditto, with arrow keys
-    bindsym $mod+Shift+Left move left
-    bindsym $mod+Shift+Down move down
-    bindsym $mod+Shift+Up move up
-    bindsym $mod+Shift+Right move right
 #
 # Workspaces:
 #
@@ -159,84 +145,28 @@ input "1267:12729:ASUE140D:00_04F3:31B9_Touchpad" {
     bindsym $mod+Shift+0 move container to workspace number 10
     # Note: workspaces can have any name you want, not just numbers.
     # We just use 1-10 as the default.
-#
-# Layout stuff:
-#
-    # You can "split" the current object of your focus with
-    # $mod+b or $mod+v, for horizontal and vertical splits
-    # respectively.
-    bindsym $mod+b splith
-    bindsym $mod+v splitv
 
-    # Switch the current container between different layout styles
-    bindsym $mod+s layout stacking
-    bindsym $mod+w layout tabbed
-    bindsym $mod+e layout toggle split
 
-    # Make the current focus fullscreen
-    bindsym $mod+f fullscreen
 
-    # Toggle the current focus between tiling and floating mode
-    bindsym $mod+Shift+space floating toggle
-
-    # Swap focus between the tiling area and the floating area
-    bindsym $mod+space focus mode_toggle
-
-    # Move focus to the parent container
-    bindsym $mod+a focus parent
-#
-# Scratchpad:
-#
-    # Sway has a "scratchpad", which is a bag of holding for windows.
-    # You can send windows there and get them back later.
-
-    # Move the currently focused window to the scratchpad
-    bindsym $mod+Shift+minus move scratchpad
-
-    # Show the next scratchpad window or hide the focused scratchpad window.
-    # If there are multiple scratchpad windows, this command cycles through them.
-    bindsym $mod+minus scratchpad show
-#
-# Resizing containers:
-#
-mode "resize" {
-    # left will shrink the containers width
-    # right will grow the containers width
-    # up will shrink the containers height
-    # down will grow the containers height
-    bindsym $left resize shrink width 10px
-    bindsym $down resize grow height 10px
-    bindsym $up resize shrink height 10px
-    bindsym $right resize grow width 10px
-
-    # Ditto, with arrow keys
-    bindsym Left resize shrink width 10px
-    bindsym Down resize grow height 10px
-    bindsym Up resize shrink height 10px
-    bindsym Right resize grow width 10px
-
-    # Return to default mode
-    bindsym Return mode "default"
-    bindsym Escape mode "default"
-}
-# bindsym $mod+r mode "resize"
-
-#
-# Status Bar:
-#
-# Read `man 5 sway-bar` for more information about this section.
-bar {
-    position top
-
-    # When the status_command prints a new line to stdout, swaybar updates.
-    # The default just shows the current date and time.
-    status_command while date +'%Y-%m-%d %I:%M:%S %p'; do sleep 1; done
-
-    colors {
-        statusline #ffffff
-        background #323232
-        inactive_workspace #32323200 #32323200 #5c5c5c
-    }
-}
+bindsym $mod+f fullscreen
 
 include /etc/sway/config.d/*
+include ./sway_keybindings.conf
+include ./sway_workspaces.conf
+
+
+set $win_float "(kitty|qalculate|blueberry.py|nm-connection-editor|pavucontrol|org.gnome.clocks|gnome-system-monitor|org.kde.polkit-kde-authentication-agent-1)"
+set $win_opacity "(kitty|qalculate|blueberry.py|nm-connection-editor|pavucontrol|org.gnome.clocks|gnome-system-monitor)"
+set $win_center_cursor "(kitty|qalculate|org.kde.polkit-kde-authentication-agent-1)"
+set $win_big "(blueberry.py|nm-connection-editor|pavucontrol|gnome-system-monitor)"
+set $win_medium "(kitty|qalculate|org.gnome.clocks)"
+set $win_small "(org.kde.polkit-kde-authentication-agent-1)"
+
+for_window [app_id=$win_float] floating enable
+
+for_window [app_id=$win_big] resize set 1440 900
+for_window [app_id=$win_medium] resize set 960 600
+for_window [app_id=$win_small] resize set 576 360
+
+# Center: approximate with move position center (scriptable if needed).
+for_window [app_id=$win_center_cursor] move position center

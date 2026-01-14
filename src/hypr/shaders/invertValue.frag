@@ -1,13 +1,16 @@
+#version 300 es
+
 precision mediump float;
-varying vec2 v_texcoord;
+in vec2 v_texcoord;
+layout(location = 0) out vec4 fragColor;
 uniform sampler2D tex;
 
 void main()
 {
-    const float contrast = 1.5;
+    const float contrast = 1.0;
 
     // Invert value while preserving hue
-    vec4 pixColor = texture2D(tex, v_texcoord);
+    vec4 pixColor = texture(tex, v_texcoord);
 
     float max_g_b = max(pixColor.g, pixColor.b);
 
@@ -18,5 +21,5 @@ void main()
     // Increase contrast
     pixColor.rgb = (pixColor.rgb - 0.5) * contrast + 0.5;
 
-    gl_FragColor = pixColor;
+    fragColor = pixColor;
 }
