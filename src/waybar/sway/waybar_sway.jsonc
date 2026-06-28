@@ -3,6 +3,8 @@
     "position": "top",
     "exclusive": false,
     "spacing": 6,
+    "margin": 32,
+    "padding": 10,
     "name": "waybar_sway",
 
     // Choose the order of the modules

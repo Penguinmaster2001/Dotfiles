@@ -14,7 +14,7 @@ mute_all_sinks () {
     done
 }
 
-DURATION=400
+DURATION=300
 
 
 
